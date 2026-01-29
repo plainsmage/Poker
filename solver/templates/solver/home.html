@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Poker Solver</title>
+    <style>
+        body {
+            background: #0d0d0d;
+            color: #e6e6e6;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .container {
+            max-width: 700px;
+            margin: auto;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 6px 0 12px 0;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            color: #e6e6e6;
+        }
+        button {
+            padding: 10px 20px;
+            background: #00eaff;
+            border: none;
+            color: #000;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .result-block {
+            margin-top: 30px;
+            padding: 20px;
+            background: #111;
+            border: 1px solid #222;
+            border-radius: 6px;
+        }
+        h2, h3 {
+            color: #00eaff;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <h1>Poker Hand Solver</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        <label>Your Hand (e.g., Ah Kh):</label>
+        <input type="text" name="hand" value="{{ hand }}">
+
+        <label>Board (e.g., Qh Jh Th):</label>
+        <input type="text" name="board" value="{{ board }}">
+
+        <button type="submit">Evaluate</button>
+    </form>
+
+    {% if result %}
+    <div class="result-block">
+
+    {% if result %}
+    <h2>Current Hand</h2>
+    <p><strong>Best 5 Cards:</strong> {{ result.best_five }}</p>
+    <p><strong>Strength:</strong> {{ result.hand_name }}</p>
+
+    <h2>Future Potential</h2>
+    <p><strong>Best Possible Type:</strong> {{ result.future.message }}</p>
+
+    <h2>Best Possible Hand (Nuts)</h2>
+    <p><strong>Type:</strong> {{ result.best_possible.hand_name }}</p>
+    <p><strong>Best 5 Cards:</strong> {{ result.best_possible.best_possible_five }}</p>
+    {% endif %}
+        </p>
+
+        <h3>Turn Improvements</h3>
+        {% if result.future.improvements.turn %}
+            {% for ht, cards in result.future.improvements.turn.items %}
+                <p>{{ ht }}: {{ cards|join:", " }}</p>
+            {% endfor %}
+        {% else %}
+            <p>No turn improvements.</p>
+        {% endif %}
+
+        <h3>River Improvements</h3>
+        {% if result.future.improvements.river %}
+            {% for ht, cards in result.future.improvements.river.items %}
+                <p>{{ ht }}: {{ cards|join:", " }}</p>
+            {% endfor %}
+        {% else %}
+            <p>No river improvements.</p>
+        {% endif %}
+
+        <h3>Combined Improvements</h3>
+        {% if result.future.improvements.combined %}
+            {% for ht, cards in result.future.improvements.combined.items %}
+                <p>{{ ht }}: {{ cards|join:", " }}</p>
+            {% endfor %}
+        {% else %}
+            <p>No combined improvements.</p>
+        {% endif %}
+
+    </div>
+    {% endif %}
+
+</div>
+</body>
+</html>
+

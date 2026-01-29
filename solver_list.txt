@@ -1,0 +1,17 @@
+total 40
+-rw-r--r--    1 root     root             0 Jan 24 02:32 Hand
+-rw-r--r--    1 root     root             0 Jan 22 19:12 __init__.py
+drwxr-xr-x    2 root     root           320 Jan 29 02:19 __pycache__
+-rw-r--r--    1 root     root            63 Jan 22 19:12 admin.py
+-rw-r--r--    1 root     root           144 Jan 22 19:12 apps.py
+-rw-r--r--    1 root     root           178 Jan 23 05:43 forms.py
+-rw-r--r--    1 root     root          9859 Jan 28 23:19 hand_strength.py
+drwxr-xr-x    3 root     root           416 Jan 27 23:02 logic
+drwxr-xr-x    3 root     root           128 Jan 22 19:17 migrations
+-rw-r--r--    1 root     root            57 Jan 22 19:12 models.py
+drwxr-xr-x    3 root     root            96 Jan 22 19:31 static
+drwxr-xr-x    3 root     root            96 Jan 24 00:56 templates
+drwxr-xr-x    3 root     root           160 Jan 26 21:43 templatetags
+-rw-r--r--    1 root     root            60 Jan 22 19:12 tests.py
+-rw-r--r--    1 root     root           105 Jan 27 00:59 urls.py
+-rw-r--r--    1 root     root          1202 Jan 29 02:19 views.py

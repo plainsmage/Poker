@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <title>Poker Solver - Results</title>
+    <link rel='stylesheet' href='/static/solver/style.css'>
+</head>
+<body>
+    <div class='app-container'>
+        <header class='app-header'>
+            <h1 class='app-title'>Poker Solver</h1>
+            <p class='app-subtitle'>Neon dark street-by-street view</p>
+        </header>
+
+        <main class='app-main results-layout'>
+
+            <section class='panel panel-actual'>
+                <h2>Hand As Is</h2>
+                <p class='meta-line'><span class='label'>Hand:</span> {{ hand }}</p>
+                <p class='meta-line'><span class='label'>Board:</span> {{ board }}</p>
+
+                <div class='result-block'>
+                    <div class='result-label'>Best 5 Cards</div>
+                    <div class='card-line'>
+                        {% for c in actual_best_five %}
+                            <span class='card-pill'>{{ c }}</span>
+                        {% empty %}
+                            <span class='card-pill empty'>No cards</span>
+                        {% endfor %}
+                    </div>
+
+                    <div class='result-label'>Hand Type</div>
+                    <div class='hand-type actual-type'>{{ actual_hand_type }}</div>
+                </div>
+            </section>
+
+            <section class='panel panel-best'>
+                <h2>Best Possible Hand</h2>
+
+                <div class='result-block'>
+                    <div class='result-label'>Best 5 Cards</div>
+                    <div class='card-line'>
+                        {% for c in best_five %}
+                            <span class='card-pill best'>{{ c }}</span>
+                        {% empty %}
+                            <span class='card-pill empty'>No cards</span>
+                        {% endfor %}
+                    </div>
+
+                    <div class='result-label'>Hand Type</div>
+                    <div class='hand-type best-type'>{{ best_hand_type }}</div>
+
+                    <div class='result-label'>Future Cards Needed</div>
+                    <div class='future-line'>
+                        {% if best_future %}
+                            {% for f in best_future %}
+                                <span class='future-pill'>{{ f }}</span>
+                            {% endfor %}
+                        {% else %}
+                            <span class='future-pill empty'>None</span>
+                        {% endif %}
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+</body>
+</html>

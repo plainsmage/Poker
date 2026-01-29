@@ -1,0 +1,27 @@
+<div class='result-block'>
+    <h3 class='results-title'>FUTURE CARDS NEEDED</h3>
+
+    {% for suit, cards in future.items %}
+        <div class='cards-row' style='margin-bottom:6px;'>
+
+            {% if suit == 'C' %}
+                <span class='card' style='color:#faff00;'>♣</span>
+            {% elif suit == 'D' %}
+                <span class='card' style='color:#faff00;'>♦</span>
+            {% elif suit == 'H' %}
+                <span class='card' style='color:#faff00;'>♥</span>
+            {% elif suit == 'S' %}
+                <span class='card' style='color:#faff00;'>♠</span>
+            {% endif %}
+
+            {% if cards %}
+                {% for c in cards %}
+                    <span class='card' style='color:#faff00;'>{{ c }}</span>
+                {% endfor %}
+            {% else %}
+                <span class='card' style='color:#555;'>—</span>
+            {% endif %}
+
+        </div>
+    {% endfor %}
+</div>

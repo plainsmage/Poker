@@ -1,0 +1,15 @@
+{% with rank=card|slice:":1" suit=card|slice:"1:" %}
+<span style="color:
+    {% if suit == 'S' %}#7dd3fc
+    {% elif suit == 'H' %}#ff4d6d
+    {% elif suit == 'D' %}#ff4d6d
+    {% else %}#00ff88
+    {% endif %}
+;">
+    {{ rank }}
+    {% if suit == 'S' %}♠{% endif %}
+    {% if suit == 'H' %}♥{% endif %}
+    {% if suit == 'D' %}♦{% endif %}
+    {% if suit == 'C' %}♣{% endif %}
+</span>
+{% endwith %}
