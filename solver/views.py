@@ -26,7 +26,7 @@ def home(request):
 
         # Add future improvement info (placeholder)
         all_cards = hand_cards + board_cards
-        result["best_possible"] = compute_best_possible_hand(all_cards)
+        result["best_possible"] = compute_best_possible_hand(all_cards[:2], all_cards[2:])
 
         result["future"] = compute_future_improvements(hand_cards, board_cards)
 
