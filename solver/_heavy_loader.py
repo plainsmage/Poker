@@ -20,5 +20,4 @@ def get_hand_tables():
             _data = json.load(f)
         return _data
 
-    # Fallback: no JSON data found. Leave _data None so callers can handle it.
     raise RuntimeError("No hand_tables.json found. Generate it or wire heavy data into _heavy_loader.get_hand_tables().")
