@@ -1,3 +1,17 @@
+from ._heavy_loader import get_hand_tables
+
+_tables = None
+
+def _ensure_tables():
+    global _tables
+    if _tables is None:
+        _tables = get_hand_tables()
+
+def _get_tables():
+    _ensure_tables()
+    return _tables
+
+
 """
 hand_strength.py
 Micro‑chunk rebuild
